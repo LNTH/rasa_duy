@@ -4,8 +4,6 @@ stories:
 
 - story: Path booking restaurant
   steps:
-  - intent: int_greet
-  - action: utter_greet
   - intent: int_booking
   - action: form_restaurant
   - active_loop: restaurant_form
@@ -18,12 +16,7 @@ stories:
   - action: utter_restaurant_submit
   - action: action_verify_restaurant
   - action: utter_ask_more_help
-  - checkpoint: ckpt_ask_more_hep
-
-- story: Path to end conversation
-  steps:
-  - checkpoint: ckpt_ask_more_hep
-  - or:
+  - or: 
     - intent: int_end
     - intent: int_deny
   - action: utter_end_conversation

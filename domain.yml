@@ -4,6 +4,7 @@ actions:
   - action_verify_restaurant
   - validate_form_restaurant
   - restaurant_form
+  
 intents:
   - int_greet
   - int_booking
