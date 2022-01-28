@@ -1,0 +1,34 @@
+version: "3.0"
+
+rules:
+- rule: Say hello whenever user greet
+  steps:
+  - intent: int_greet
+  - slot_was_set:
+      - ent_name: null
+  - action: utter_greet
+
+- rule: Say hello whenever user greet, with username provided
+  steps:
+  - intent: int_greet
+    entities:
+    - ent_name: "huy"
+  - slot_was_set:
+    - ent_name: "huy"
+  - action: utter_greet_with_name
+
+- rule: User want to book a restaurant
+  steps:
+  - intent: int_booking
+  - action: form_restaurant
+  - active_loop: restaurant_form
+
+- rule: Submit restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - action: restaurant_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_restaurant_submit

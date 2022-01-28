@@ -1,0 +1,108 @@
+version: "3.0"
+
+nlu:
+- intent: int_greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hey, [Huy](ent_name) here
+    - hello, I'm [Huy](ent_name)
+
+- intent: int_booking
+  examples: |
+    - I want to book a restaurant
+    - Can you help me booking a restaurant
+    - Please book a restaurant for me
+    - Can you book a [Thai](ent_cuisine) restaurant for me
+    - Can you book a [Vietnamese](ent_cuisine) restaurant for me
+    - Can you book a [French](ent_cuisine) restaurant for me
+    - I want a restaurant for [two](ent_num_people), either [French](ent_cuisine) or [Vietnamese](ent_cuisine) is okay
+    - I want a restaurant for [3](ent_num_people), either [French](ent_cuisine) or [Vietnamese](ent_cuisine) is okay
+    - I want a restaurant for [my self](ent_num_people), either [Thai](ent_cuisine) or [Vietnamese](ent_cuisine) is okay
+    - I want a restaurant for [1](ent_num_people), either [Thai](ent_cuisine) or [French](ent_cuisine) is okay
+    - a [Vietnamese] restaurant for [2](ent_num_people)
+- intent: int_provide_info
+  examples: |
+    - I love [French](ent_cuisine) food
+    - [French](ent_cuisine) is good
+    - hmmm, either [French](ent_cuisine) or [Vietnamese](ent_cuisine) is okay
+    - [French](ent_cuisine) will be fine
+    - I love [Thai](ent_cuisine) food
+    - [Thai](ent_cuisine) is good
+    - hmmm, either [Thai](ent_cuisine) or [French](ent_cuisine) is okay
+    - [Thai](ent_cuisine) will be fine
+    - I love [Vietnamese](ent_cuisine) food
+    - [Vietnamese](ent_cuisine) is good
+    - hmmm, either [Vietnamese](ent_cuisine) or [Thai](ent_cuisine) is okay
+    - [Vietnamese](ent_cuisine) will be fine
+    - [only me](ent_num_people)
+    - [1](ent_num_people)
+    - [2](ent_num_people)
+    - [3](ent_num_people)
+    - [4](ent_num_people)
+    - [5](ent_num_people)
+    - [my self](ent_num_people)
+    - [myself](ent_num_people)
+    - [my-self](ent_num_people)
+    - [one](ent_num_people)
+    - [two](ent_num_people)
+    - [three](ent_num_people)
+    - [four](ent_num_people)
+    - [five](ent_num_people)
+
+
+
+
+
+- intent: int_end
+  examples: |
+    - No, I'm all good
+    - That enough
+    - No, thank you
+    - Thank you, but that's enough
+
+- intent: int_deny
+  examples: |
+    - nope
+    - no
+    - not
+    - cancel
+
+- lookup: ent_cuisine
+  examples: |
+    - Thai
+    - Vietnamese
+    - French
+- synonym: "4"
+  examples: |
+    - four
+- synonym: "1"
+  examples: |
+    - only me
+    - one
+    - for me
+    - myself
+    - my-self
+    - my self
+- synonym: "2"
+  examples: |
+    - two
+    - a couple
+    - couple  
+- synonym: "3"
+  examples: |
+    - three
+- synonym: "5"
+  examples: |
+    - five
