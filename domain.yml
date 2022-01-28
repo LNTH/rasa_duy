@@ -1,0 +1,75 @@
+version: "3.0"
+
+actions:
+  - action_verify_restaurant
+  - validate_form_restaurant
+  - restaurant_form
+intents:
+  - int_greet
+  - int_booking
+  - int_end
+  - int_deny
+  - int_provide_info
+responses:
+  utter_greet:
+  - text: "Hi! Welcome to our website"
+  utter_greet_with_name:
+  - text: "Nice to meet you {ent_name}, welcome back \ \n How can I help you"
+  utter_ask_ent_cuisine:
+  - text: "Please tell me what are your favorite cuisines"
+  utter_ask_ent_num_people:
+  - text: "One more question, tell me how many people are coming?"
+  utter_ask_more_help:
+  - text: "Anything else that I can help you?"
+  utter_restaurant_submit:
+  - text: "Please wait while I making a reservation for you"
+  utter_can_not_find_restaurant:
+  - text: "Sorry, I can not find any restaurant for you at the moment"
+  utter_booking_successfull:
+  - text: "DONE"
+  utter_end_conversation:
+  - text: "Thank you for using our service, feel free to cumbak anytime you want"
+entities:
+  - ent_name
+  - ent_cuisine
+  - ent_num_people
+slots:
+  ent_cuisine:
+    type: list
+    mappings:
+    - type: from_entity
+      entity: ent_cuisine
+      intent: int_booking
+    - type: from_entity
+      entity: ent_cuisine
+      intent: int_provide_info
+      conditions:
+      - active_loop: form_restaurant
+        requested_slot: ent_cuisine
+  ent_num_people:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: ent_num_people
+      intent: int_booking
+    - type: from_entity
+      entity: ent_num_people
+      intent: int_provide_info
+      conditions:
+      - active_loop: form_restaurant
+        requested_slot: ent_num_people
+  ent_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: ent_name
+      intent: int_greet
+forms:
+  form_restaurant:
+    required_slots:
+      - ent_cuisine
+      - ent_num_people
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
